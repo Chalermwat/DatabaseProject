@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GoodCarGoodBoi</title>
+    <style>
+      table, th, td {
+          border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    I am God.<p id="edit"></p><br><br>
+    Search: <input type="text" id="search_field">
+    <button type="button" onclick="search()">Search</button><br><br>
+    <button type="button" onclick="deletetable()">Delete THat shit</button><br><br>
+    <p id="delete"></p><br><br>
+    <p id="add"></p><br><br>
+    <button type="button" id="log out" onclick="LogOut()">Log out</button><br><br>
+
+    <table id="list">
+      <tr>
+      <th>ID</th>
+      <th>First_Name</th>
+      <th>Last_Name</th>
+      <th>Email</th>
+      <th>Tel</th>
+      <th>Address</th>
+      <th>Birthday</th>
+      <th>Membership</th>
+      <th>Number_of_Vehicle</th>
+      </tr>
+    </table>
+    <br>
+    <button type="button" id="add" onclick="add()">Add</button>
+  </body>
+  <script type="text/javascript" src="../JS/admin.js"></script>
+</html>

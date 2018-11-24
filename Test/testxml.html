@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Using the XMLHttpRequest Object</h2>
+
+<div id="demo">
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+</div>
+
+<script>
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  console.log("Start load");
+  xhttp.onreadystatechange = function() {
+    /*console.log("State check");
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      console.log("In xml");
+      document.getElementById("demo").innerHTML=this.responseText;
+    }*/
+    /*
+    alert ("rdystate: " + xhttp.readyState);
+    alert ("status: "   + xhttp.status);
+    alert ("Text: "     + xhttp.statusText);
+    if (xhttp.readyState==4 && xhttp.status==200)
+    {
+      T = xhttp.responseText;
+      alert(T);
+    }*/
+
+  };
+  console.log("GET");
+  xhttp.open("POST", "/update", true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  var obj = {
+    order_id: 1,
+    admin_username: "chalermwat",
+    quo_price: 10
+  };
+  var data = JSON.stringify(obj);
+  xhttp.send(data);
+}
+</script>
+
+</body>
+</html>

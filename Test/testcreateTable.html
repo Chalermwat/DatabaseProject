@@ -1,0 +1,24 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Table</title>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+    document.write('<table style="width:100%">');
+    for (var a=0; a < 10; a++) {
+        document.write("<tr>");
+        for(var b=0; b<10; b++) {
+            document.write("<th>"+(a*b)+"</th>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>"); 
+</script>
+</body>
+</html>

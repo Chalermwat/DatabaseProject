@@ -1,0 +1,1 @@
+Start chrome with this command ==> chrome.exe --allow-file-access-from-files
