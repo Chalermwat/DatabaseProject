@@ -2,7 +2,7 @@ create database GoodBoiGoodCar;
 use GoodBoiGoodCar;
 
 create table Customer (
-	ID int(13) AUTO_INCREMENT,
+	ID varchar(13),
     First_Name varchar(50) not null,
     Last_Name varchar(50) not null,
     Email varchar(255),
@@ -31,7 +31,7 @@ create table Vehicle (
     Number_of_Services int(3) unsigned not null,
     Car_age int(2) unsigned not null,
     Driving_distance int(6) unsigned not null,
-    Customer_ID int(13) not null,
+    Customer_ID varchar(13) not null,
 	primary key(License_plate),
     foreign key(Customer_ID) references Customer(ID) on delete cascade on update cascade,
     foreign key(Brand,Model) references Vehicle_Type(Brand,Model) on delete cascade on update cascade
