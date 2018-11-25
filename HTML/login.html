@@ -3,13 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>GoodCarGoodBoi</title>
+    <style>
+      p.ex1 {
+         margin: 1px;
+      }
+    </style>
   </head>
-  <body>
-    Login:<br>
-    Username:<input type="text" name="username"><br>
-    Password:<input type="password" name="password"><br>
-    <button type="button" onclick="login()">Login</button>
-    <button type="button" onclick="signup()">Sign Up</button>
+  <body style="background-image:url('1.jpg')">
+
+    <div align="center"> Login:<br></div>
+    
+    <!img src="http://1000springs.org.nz/static/img/icons/login.png" alt="Login image" align="middle"><br>
+    <div align="center"> 
+      <p class="ex1"> Username:<input type="text" name="username"></p><br>
+      <p class="ex1">Password:<input type="password" name="password"></p> <br>
+      <p class="ex1"><button type="button" onclick="login()">Login</button></p><br>
+      <p class="ex1"> don't have any account?<button type="button" onclick="signup()">Sign Up</button></p>
+    
+    </div> 
+    
+    
+    
     
   </body>
   <script src="../JS/login.js"></script>
