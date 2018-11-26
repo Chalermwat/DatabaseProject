@@ -32,17 +32,30 @@ app.get("/view",function(req,res){
     var q = 'select * from customer';
     connection.query(q,function(err,result,field){
         if(err) throw err;
-        res.send(result);
+        res.setHeader("Content-type","application/json");
+        res.send(JSON.stringify(result));
     })
 })
 
 app.post("/editdata",function(req,res){
     var inp=req.body;
     console.log(inp);
-    var q = "UPDATE `goodboigoodcar`.`customer` SET `ID` = '"+inp.CID+"', `First_Name` = '"+inp.First_Name+"', `Last_Name` = '"+inp.Last_Name+"', `Email` = '"+inp.Email+"', `Tel` = '"+inp.Tel+"', `Address` = '"+inp.Address+"', `Birthday` = '"+inp.Birthday+"', `Membership` = '"+inp.Membership+"', `Number_of_Vehicle` = '"+inp.Number_of_Vehicle+"' WHERE (`ID` = '"+inp.CID+"')"
+    var q = "UPDATE `goodboigoodcar`.`customer` SET `ID` = '"+inp.CID+"', `First_Name` = '"+inp.First_Name+"', `Last_Name` = '"+inp.Last_Name+"', `Email` = '"+inp.Email+"', `Tel` = '"+inp.Tel+"', `Address` = '"+inp.Address+"', `Birthday` = '"+inp.Birthday+"', `Membership` = '"+inp.Membership+"', `Number_of_Vehicle` = '"+inp.Number_of_Vehicle+"' WHERE (`ID` = '"+inp.Old_CID+"')"
     connection.query(q);
     console.log("Edited");
 });
+
+app.post("/edit",function(req,res){
+    var inp=req.body;
+    var q = "select * from customer where ID='"+inp.ID+"'";
+    connection.query(q,function(err,result){
+        if(err) throw err;
+        res.setHeader("Content-type","application/json");
+        res.send(JSON.stringify(result));
+    })
+    
+})
+
 app.post("/applymembership",function(req,res){
     var inp=req.body;
     console.log(inp);
@@ -53,7 +66,7 @@ app.post("/applymembership",function(req,res){
     console.log("Insert to query");
 })
 
-app.all("/search",function(req,res){
+app.post("/search",function(req,res){
     var inp=req.body;
     console.log(inp);
     var q = "select * from customer where First_Name='"+inp.First_Name+"'";

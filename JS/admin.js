@@ -107,6 +107,14 @@ xhttp.open("GET","/view",true);
 xhttp.send();
 
 function edit(item){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST","/edit",true);
+    xhttp.setRequestHeader("Content-type","application/json");
+    var temp = {
+        ID:item
+    };
+    var send_data = JSON.stringify(temp);
+    xhttp.send(send_data);
     window.location.href = "/editdata"
 }
 
@@ -144,7 +152,6 @@ function add(){
 
 function search(){
     //document.getElementById("add").innerHTML = "God is search to add data";
-    
     var xhttp=new XMLHttpRequest();
     xhttp.open("post","/search",true);
     xhttp.setRequestHeader("Content-type","application/json");
