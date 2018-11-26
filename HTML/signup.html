@@ -6,6 +6,8 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
+    <h3>Sign Up</h3>
+    <h5>Customer's Information</h5>
 
   <div class="form-row">
     <div class="col-md-4 mb-3">
@@ -29,7 +31,8 @@
         Please enter Lastname.
       </div>
     </div>
-    <div class="col-md-4 mb-3">
+
+    <div class="col-md-3 mb-3">
       <label for="email">Email</label>
       <div class="input-group">
         <input type="text" class="form-control" id="email" placeholder="Email" required>
@@ -38,16 +41,18 @@
         </div>
       </div>
     </div>
+
   </div>
+
   <div class="form-row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <label for="CID">Citizen ID</label>
       <input type="text" class="form-control" id="CID" placeholder="ex.1234567898765" required>
       <div class="invalid-feedback">
           Please enter a valid Citizen ID.
       </div>
-      
     </div>
+
     <div class="col-md-3 mb-3">
       <label for="tel">Telephone Number</label>
       <input type="text" class="form-control" id="tel" placeholder="ex.09812345678" required>
@@ -55,6 +60,7 @@
         Please provide a telephone number
       </div>
     </div>
+
     <div class="col-md-3 mb-3">
       <label for="birthday">Birthday</label>
       <input type="date" class="form-control" id="birthday" placeholder="Zip" required="">
@@ -66,14 +72,14 @@
   </div>
   <div class="form-row">
     
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="address">Address</label>
       <input type="text" class="form-control" id="address" placeholder="Address" required>
       <div class="invalid-feedback">
         Please provide a valid Address.
       </div>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-2 mb-3">
       <label for="no_vehicle">Number Of Vehicle</label>
       <input type="text" class="form-control" id="no_vehicle" placeholder="ex. 1" required>
       <div class="invalid-feedback">
@@ -82,34 +88,101 @@
     </div>
     
   </div>
-  
-  <div class="form-group">
+  <h5>Vehicle's Information</h5>
+  <small>
+    *If you have more than 1 vehicle. Please fill in another vehicle's information later.
+  </small>
+
+  <div class="form-row">
+    <div class="col-md-2 mb-3">
+      <label for="license">License Plate</label>
+      <input type="text" class="form-control" id="license" placeholder="ex. ab1234" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please enter License Plate.
+      </div>
+    </div>
+
+    <div class="col-md-2 mb-3">
+      <label for="Vehicle_ID">Vehicle ID</label>
+      <input type="text" class="form-control" id="Vehicle_ID" placeholder="ex. a5v4857233" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please enter Vehicle ID.
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="brand">Vehicle Brand</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="brand" placeholder="ex. Toyota" required>
+        <div class="invalid-feedback">
+          Please enter vehicle brand.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="model">Vehicle Model</label>
+      <input type="text" class="form-control" id="model" placeholder="ex. Hilux Vigo" required>
+      <div class="invalid-feedback">
+          Please enter a vehicle Model.
+      </div>
+      
+    </div>
+  </div>
+  <div class="form-row">
+    
+    <div class="col-md-2 mb-3">
+      <label for="manufacture_date">Manufacture Date</label>
+      <input type="date" class="form-control" id="manufacture_date" required>
+      <div class="invalid-feedback">
+        Please select manufacture date
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="distance">Driving Distance(KM)</label>
+      <input type="text" class="form-control" id="distance" placeholder="ex. 20000" required>
+      <div class="invalid-feedback">
+        Please enter driving distance.
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="no_service">Number of Service</label>
+      <input type="text" class="form-control" id="no_service" placeholder="ex. 5" required>
+      <div class="invalid-feedback">
+        Please enter number of service.
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="lastCheck">Last Checking Date</label>
+      <input type="date" class="form-control" id="lastCheck" required>
+      <div class="invalid-feedback">
+        Please enter Last checking date.
+      </div>
+    </div>
     
   </div>
+  <div class="form-row">
+    
+    
+    <!--div class="col-md-3 mb-3">
+      <label for="customer">Customer ID</label>
+      <input type="text" class="form-control" id="customer" required>
+      <div class="invalid-feedback">
+        Please enter your customer ID.
+      </div>
+    </div-->
+    
+  </div>
+  
+   
   <button class="btn btn-primary" type="button" onclick="submit()">Submit form</button>
-  <button class="btn btn-primary" type="button" onclick="back()">Back</button>
 
 </body>
 
-<!-- <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script> -->
+
   <script type="text/javascript" src="../JS/signup.js"></script>
 </html>
