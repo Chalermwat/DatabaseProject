@@ -20,11 +20,11 @@ insert into vehicle_type value('bmw','2018 pickup','pickup');
 insert into vehicle_type value('honda','cb1300','motorcycle');
 insert into vehicle_type value('volkswagen','sharan','van');
 
-insert into vehicle value('ab12','abcd1234','toyota','vios','2018-01-10',2,3,6000,'1309902541789');
-insert into vehicle value('cd13','asdf1','toyota','hyundai','2018-02-24',1,2,5500,'1309902525151');
-insert into vehicle value('fg15','bnm56','bmw','2018 pickup','2018-04-15',1,4,1000,'4215387521785');
-insert into vehicle value('rt17','trs487','honda','cb1300','2018-03-20',2,3,3200,'1604865865574');
-insert into vehicle value('yu20','hgj348','volkswagen','sharan','2018-05-07',2,3,4000,'2486278223989');
+insert into vehicle value('ab12','abcd1234','toyota','vios','2018-01-10',2,'2009-01-10',6000,'1309902541789');
+insert into vehicle value('cd13','asdf1','toyota','hyundai','2018-02-24',1,'2011-11-11',5500,'1309902525151');
+insert into vehicle value('fg15','bnm56','bmw','2018 pickup','2018-04-15',1,'2018-01-01',1000,'4215387521785');
+insert into vehicle value('rt17','trs487','honda','cb1300','2018-03-20',2,'2017-12-09',3200,'1604865865574');
+insert into vehicle value('yu20','hgj348','volkswagen','sharan','2018-05-07',2,'2016-07-16',4000,'2486278223989');
 
 insert into reservation value('1234','fixcar','2018-01-19 09:14:07',21,'abcd1234');
 insert into reservation value('2444','changemirror','2018-03-09 15:44:00',37,'asdf1');

@@ -29,7 +29,7 @@ create table Vehicle (
     Model varchar(15) not null,
     Last_Checking_Date date,
     Number_of_Services int(3) unsigned not null,
-    Car_age int(2) unsigned not null,
+    Manufacture_Date date not null,
     Driving_distance int(6) unsigned not null,
     Customer_ID varchar(13) not null,
 	primary key(License_plate),
