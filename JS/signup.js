@@ -14,6 +14,7 @@ function submit(){
     var member ={
         First_Name: document.getElementById("fname").value,
         Last_Name: document.getElementById("lname").value,
+        CID : document.getElementById("CID").value,
         Email:document.getElementById("email").value,
         Tel:document.getElementById("tel").value,
         Address:document.getElementById("address").value,

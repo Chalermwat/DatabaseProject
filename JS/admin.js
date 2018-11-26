@@ -89,10 +89,12 @@ xhttp.onreadystatechange = function(){
             col[8].innerHTML = data[item].Number_of_Vehicle;
             col.push(document.createElement("button"));
             col[9].type = "button";
+            col[9].className = "btn btn-primary";
             col[9].innerHTML = "edit";
             col[9].setAttribute("onclick","edit("+data[item].ID+")");
             col.push(document.createElement("button"));
             col[10].type="button";
+            col[10].className = "btn btn-danger";
             col[10].innerHTML="Delete";
             col[10].setAttribute("onclick","del("+data[item].ID+")");
             for(var i=0;i<11;i++) row.appendChild(col[i]);

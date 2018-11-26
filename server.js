@@ -39,7 +39,7 @@ app.get("/view",function(req,res){
 app.post("/applymembership",function(req,res){
     var inp=req.body;
     console.log(inp);
-    var q = "INSERT INTO `goodboigoodcar`.`customer` (`First_Name`, `Last_Name`, `Email`, `Tel`, `Address`, `Birthday`, `Membership`, `Number_of_Vehicle`) VALUES ('"+inp.First_Name+"', '"+inp.Last_Name+"', '"+inp.Email+"', '"+inp.Tel+"', '"+inp.Address+"', '"+inp.Birthday+"', '1', '"+inp.Number_of_Vehicle+"')"
+    var q = "INSERT INTO `goodboigoodcar`.`customer` (`ID`,`First_Name`, `Last_Name`, `Email`, `Tel`, `Address`, `Birthday`, `Membership`, `Number_of_Vehicle`) VALUES ('"+inp.CID+"','"+inp.First_Name+"', '"+inp.Last_Name+"', '"+inp.Email+"', '"+inp.Tel+"', '"+inp.Address+"', '"+inp.Birthday+"', '1', '"+inp.Number_of_Vehicle+"')"
     connection.query(q);
     console.log("Insert to query");
 })
