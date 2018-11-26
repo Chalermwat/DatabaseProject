@@ -74,7 +74,13 @@ app.post("/applymembership",function(req,res){
     console.log(inp);
     var q = "INSERT INTO `goodboigoodcar`.`customer` (`ID`,`First_Name`, `Last_Name`, `Email`, `Tel`, `Address`, `Birthday`, `Membership`, `Number_of_Vehicle`) VALUES ('"+inp.CID+"','"+inp.First_Name+"', '"+inp.Last_Name+"', '"+inp.Email+"', '"+inp.Tel+"', '"+inp.Address+"', '"+inp.Birthday+"', '1', '"+inp.Number_of_Vehicle+"')"
     connection.query(q,function(err,result){
-        if(err) res.sendFile(path.join(__dirname+"/HTML/login.html"));
+        console.log(result);
+    });
+    var q = "INSERT INTO `goodboigoodcar`.`vehicle` (`Vehicle_ID`, `License_plate`, `Brand`, `Model`, `Last_Checking_Date`, `Number_of_Services`, `Manufacture_Date`, `Driving_distance`, `Customer_ID`) VALUES ('"+inp.Vehicle_ID+"', '"+inp.License_plate+"', '"+inp.Brand+"', '"+inp.Model+"', '"+inp.Last_Checking_Date+"', '"+inp.Number_of_Services+"', '"+inp.Manufacture_Date+"', '"+inp.Driving_distance+"', '"+inp.CID+"')";
+    connection.query(q,function(err,result){
+        if(err) throw err;
+        console.log(result);
+        res.sendFile(path.join(__dirname+"/HTML/login.html"));
     });
     console.log("Insert to query");
 })
