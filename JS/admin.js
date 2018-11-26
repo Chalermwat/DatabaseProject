@@ -107,7 +107,7 @@ xhttp.open("GET","/view",true);
 xhttp.send();
 
 function edit(item){
-    document.getElementById("edit").innerHTML = "God is going to edit data"+item;
+    window.location.href = "/editdata"
 }
 
 function del(item){
@@ -187,10 +187,6 @@ function search(){
             }
         }
     }
-}
-
-function deletetable(){
-    var parent = document.getElementById("list");
 }
 
 /*document.write('<table style="width:100%">');

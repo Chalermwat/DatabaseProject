@@ -36,6 +36,13 @@ app.get("/view",function(req,res){
     })
 })
 
+app.post("/editdata",function(req,res){
+    var inp=req.body;
+    console.log(inp);
+    var q = "UPDATE `goodboigoodcar`.`customer` SET `ID` = '"+inp.CID+"', `First_Name` = '"+inp.First_Name+"', `Last_Name` = '"+inp.Last_Name+"', `Email` = '"+inp.Email+"', `Tel` = '"+inp.Tel+"', `Address` = '"+inp.Address+"', `Birthday` = '"+inp.Birthday+"', `Membership` = '"+inp.Membership+"', `Number_of_Vehicle` = '"+inp.Number_of_Vehicle+"' WHERE (`ID` = '"+inp.CID+"')"
+    connection.query(q);
+    console.log("Edited");
+});
 app.post("/applymembership",function(req,res){
     var inp=req.body;
     console.log(inp);
@@ -82,6 +89,11 @@ app.get("/admin",function(req,res){
 app.get("/signup",function(req,res){
     console.log("Going to SignUp page");
     res.sendFile(path.join(__dirname+"/HTML/signup.html"));
+})
+
+app.get("/editdata",function(req,res){
+    console.log("Going to edit page");
+    res.sendFile(path.join(__dirname+"/HTML/editdata.html"));
 })
 
 
