@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GoodCarGoodBoi</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+      p.ex1 {
+         margin: 1px;
+      }
+  </style>
+  </head>
+  <body>
+    <h3> Reservation form</h3>
+    <!form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="service_type">Select Service type</label>
+      <select class="form-control">
+        <option selected>...</option>
+        <option value="Cas_wash">Car Wash</option>
+        <option value="Car_Repair_and_Maintenance">Car Repairing and Maintenance</option>
+        <option value="Car_Checking">Car Checking</option>
+      </select>
+      <div class="invalid-feedback">
+        Please Select service type.
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="Branch_ID">Branch</label>
+      <input type="text" class="form-control" id="Branch_ID" placeholder="ex. 01" required>
+      <div class="invalid-feedback">
+        Please enter Branch ID.
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="time">Select Time</label>
+      <div class="input-group">
+        <input type="datetime-local" class="form-control" id="time" required>
+        <div class="invalid-feedback">
+          Please select Time.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4">
+      <label for="license">Enter Vehicle License plate</label>
+      <input type="text" class="form-control" id="license" placeholder="ex. ab1234" required>
+      <div class="invalid-feedback">
+          Please enter Vehicle license.
+      </div>
+      
+    </div>
+    
+    
+  </div>
+  <div class="form-row">
+    
+  </div>
+  
+  <div class="form-group">
+    
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+<!/form>
+  </body>
+</html>
