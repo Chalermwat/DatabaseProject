@@ -33,6 +33,7 @@ app.get("/view",function(req,res){
     connection.query(q,function(err,result,field){
         if(err) throw err;
         res.setHeader("Content-type","application/json");
+        //console.log(JSON.stringify(result));
         res.send(JSON.stringify(result));
     })
 })
@@ -47,14 +48,15 @@ app.post("/editdata",function(req,res){
 
 app.post("/edit",function(req,res){
     var inp=req.body;
-    var q = "select * from customer where ID='"+inp.ID+"'";
+    console.log(inp);
+    var q ="select * from customer where ID='"+inp.ID+"'";
     connection.query(q,function(err,result){
         if(err) throw err;
         res.setHeader("Content-type","application/json");
-        res.send(JSON.stringify(result));
-    })
-    
-})
+        console.log(JSON.stringify(result));
+        res.json(result);
+    });
+});
 
 app.post("/applymembership",function(req,res){
     var inp=req.body;
@@ -66,10 +68,22 @@ app.post("/applymembership",function(req,res){
     console.log("Insert to query");
 })
 
-app.post("/search",function(req,res){
+app.post("/search_name",function(req,res){
     var inp=req.body;
     console.log(inp);
     var q = "select * from customer where First_Name='"+inp.First_Name+"'";
+    connection.query(q,function(err,result,field){
+        if(err) throw err;
+        console.log(result);
+        res.setHeader("Content-type","application/json");
+        res.send(JSON.stringify(result));
+    })
+})
+
+app.post("/search_id",function(req,res){
+    var inp=req.body;
+    console.log(inp);
+    var q = "select * from customer where ID='"+inp.ID+"'";
     connection.query(q,function(err,result,field){
         if(err) throw err;
         console.log(result);

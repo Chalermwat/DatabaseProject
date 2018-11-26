@@ -1,10 +1,223 @@
 var xhttp = new XMLHttpRequest();
 var global;
+var col = [];
+var cols = [];
 xhttp.onreadystatechange = function(){
     if(this.status==200 && this.readyState==4){
         var data = JSON.parse(this.responseText);
+        //console.log(JSON.parse(this.responseText));
         global = data;
-        //document.getElementById("list").innerHTML = data[0].account_number+data[0].balance;
+        console.log(data);
+        for (c of cols) {
+            c.parentNode.removeChild(c);
+        }
+        cols = [];
+        for (var item=0; item < data.length; item++) {
+            var row=document.createElement("tr");
+            row.setAttribute("id","row");
+            col=new Array();
+            for(var i=0;i<9;i++) col.push(document.createElement("td"));
+            col[0].innerHTML = data[item].ID;
+            col[1].innerHTML = data[item].First_Name;
+            col[2].innerHTML = data[item].Last_Name;
+            col[3].innerHTML = data[item].Email;
+            col[4].innerHTML = data[item].Tel;
+            col[5].innerHTML = data[item].Address;
+            col[6].innerHTML = data[item].Birthday;
+            col[7].innerHTML = data[item].Membership;
+            col[8].innerHTML = data[item].Number_of_Vehicle;
+            col.push(document.createElement("button"));
+            col[9].type = "button";
+            col[9].className = "btn btn-primary";
+            col[9].innerHTML = "edit";
+            col[9].setAttribute("onclick","edit('"+data[item].ID+"')");
+            col.push(document.createElement("button"));
+            col[10].type="button";
+            col[10].className = "btn btn-danger";
+            col[10].innerHTML="Delete";
+            col[10].setAttribute("onclick","del('"+data[item].ID+"')");
+            //console.log(data[item].ID);
+            for(var i=0;i<11;i++) row.appendChild(col[i]);
+            document.getElementById("list").appendChild(row);
+            cols.push(row);
+        }    
+    }
+
+};
+xhttp.open("GET","/view",true);
+xhttp.send();
+
+function edit(item){
+    alert("Enter edit mode");
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.open("POST","/edit",true);
+    // xhttp.setRequestHeader("Content-type","application/json");
+    // var temp = {
+    //     ID:item
+    // };
+    // var send_data = JSON.stringify(temp);
+    // xhttp.send(send_data);
+ 
+    // localStorage.setItem("editItem", JSON.stringify(item));
+    // window.location.href = "/editdata";
+
+    window.location.href = "/editdata?id=" + item;
+}
+
+function del(item){
+    console.log(item);
+    //alert("GOd is going to delete");
+    /*var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState==4&&this.status==200){
+            //do nothing
+        }
+    }
+    xhttp.open("POST","/delete",true);
+    xhttp.setRequestHeader("Content-type","application/json");
+    var temp = {
+        ID:item
+    };
+    var send_data = JSON.stringify(temp);
+    xhttp.send(send_data);
+    window.location.href = "/admin";
+    alert("Data Deleted");*/
+    
+}
+
+function LogOut(){
+    window.location.href = "/";
+}
+
+function add(){
+    document.getElementById("add").innerHTML = "God is going to add data";
+    window.location.href = "/signup";
+}
+
+function search_name(){
+    //document.getElementById("add").innerHTML = "God is search to add data";
+    var xhttp=new XMLHttpRequest();
+    xhttp.open("post","/search_name",true);
+    xhttp.setRequestHeader("Content-type","application/json");
+    var search ={
+        First_Name:document.getElementById("search_name_field").value
+    };
+    var send_data = JSON.stringify(search);
+    xhttp.send(send_data);
+    console.log("Done search");
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState==4&&this.status==200){
+            console.log("Hello");
+            var data = JSON.parse(this.responseText);
+            for (c of cols) {
+                c.parentNode.removeChild(c);
+            }
+            cols = [];
+            for(var item=0;item<data.length;item++){
+                console.log(data[item].ID);
+                var row=document.createElement("tr");
+                row.setAttribute("id","row");
+                col=new Array();
+                for(var i=0;i<9;i++) col.push(document.createElement("td"));
+                col[0].innerHTML = data[item].ID;
+                col[1].innerHTML = data[item].First_Name;
+                col[2].innerHTML = data[item].Last_Name;
+                col[3].innerHTML = data[item].Email;
+                col[4].innerHTML = data[item].Tel;
+                col[5].innerHTML = data[item].Address;
+                col[6].innerHTML = data[item].Birthday;
+                col[7].innerHTML = data[item].Membership;
+                col[8].innerHTML = data[item].Number_of_Vehicle;
+                col.push(document.createElement("button"));
+                col[9].type = "button";
+                col[9].innerHTML = "edit";
+                col[9].setAttribute("onclick","edit("+data[item].ID+")");
+                col.push(document.createElement("button"));
+                col[10].type="button";
+                col[10].innerHTML="Delete";
+                col[10].setAttribute("onclick","del("+data[item].ID+")");
+                for(var i=0;i<11;i++) row.appendChild(col[i]);
+                document.getElementById("list").appendChild(row);
+                cols.push(row);
+            }
+        }
+    }
+    document.getElementById("search_name_field").value ="";
+}
+
+function search_id(){
+    //document.getElementById("add").innerHTML = "God is search to add data";
+    var xhttp=new XMLHttpRequest();
+    xhttp.open("post","/search_id",true);
+    xhttp.setRequestHeader("Content-type","application/json");
+    var search ={
+        ID:document.getElementById("search_id_field").value
+    };
+    var send_data = JSON.stringify(search);
+    xhttp.send(send_data);
+    console.log("Done search");
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState==4&&this.status==200){
+            console.log("Hello");
+            var data = JSON.parse(this.responseText);
+            for (c of cols) {
+                c.parentNode.removeChild(c);
+            }
+            cols = [];
+            for(var item=0;item<data.length;item++){
+                console.log(data[item].ID);
+                var row=document.createElement("tr");
+                row.setAttribute("id","row");
+                col=new Array();
+                for(var i=0;i<9;i++) col.push(document.createElement("td"));
+                col[0].innerHTML = data[item].ID;
+                col[1].innerHTML = data[item].First_Name;
+                col[2].innerHTML = data[item].Last_Name;
+                col[3].innerHTML = data[item].Email;
+                col[4].innerHTML = data[item].Tel;
+                col[5].innerHTML = data[item].Address;
+                col[6].innerHTML = data[item].Birthday;
+                col[7].innerHTML = data[item].Membership;
+                col[8].innerHTML = data[item].Number_of_Vehicle;
+                col.push(document.createElement("button"));
+                col[9].type = "button";
+                col[9].innerHTML = "edit";
+                col[9].setAttribute("onclick","edit("+data[item].ID+")");
+                col.push(document.createElement("button"));
+                col[10].type="button";
+                col[10].innerHTML="Delete";
+                col[10].setAttribute("onclick","del("+data[item].ID+")");
+                for(var i=0;i<11;i++) row.appendChild(col[i]);
+                document.getElementById("list").appendChild(row);
+                cols.push(row);
+            }
+        }
+    }
+    document.getElementById("search_id_field").value ="";
+}
+
+/*document.write('<table style="width:100%">');
+        document.write("<tr>");
+            document.write("<th>"+ID+"</th>");
+            document.write("<th>"+First_Name+"</th>");
+            document.write("<th>"+Last_Name+"</th>");
+            document.write("<th>"+Email+"</th>");
+            document.write("<th>"+Tel+"</th>");
+            document.write("<th>"+Address+"</th>");
+            document.write("<th>"+Birthday+"</th>");
+            document.write("<th>"+Membership+"</th>");
+            document.write("<th>"+Number_of_Vehicle+"</th>");
+        document.write("</tr>");
+        for (var item=0; item < data.length; item++) {
+            document.write("<tr>");
+            document.write("<th>"+data[item].ID+"</th>");
+            document.write("</tr>");
+        }
+        document.write("</table>"); */
+
+         //document.getElementById("list").innerHTML = data[0].account_number+data[0].balance;
         /*for(var item=0;item<data.length;item++){
             var row = document.createElement("span");
             var col = [];
@@ -72,145 +285,3 @@ xhttp.onreadystatechange = function(){
         }
         txt+="</table>";
         document.getElementById("list").innerHTML = txt;*/
-
-        for (var item=0; item < data.length; item++) {
-            var row=document.createElement("tr");
-            row.setAttribute("id","row");
-            var col=new Array();
-            for(var i=0;i<9;i++) col.push(document.createElement("td"));
-            col[0].innerHTML = data[item].ID;
-            col[1].innerHTML = data[item].First_Name;
-            col[2].innerHTML = data[item].Last_Name;
-            col[3].innerHTML = data[item].Email;
-            col[4].innerHTML = data[item].Tel;
-            col[5].innerHTML = data[item].Address;
-            col[6].innerHTML = data[item].Birthday;
-            col[7].innerHTML = data[item].Membership;
-            col[8].innerHTML = data[item].Number_of_Vehicle;
-            col.push(document.createElement("button"));
-            col[9].type = "button";
-            col[9].className = "btn btn-primary";
-            col[9].innerHTML = "edit";
-            col[9].setAttribute("onclick","edit("+data[item].ID+")");
-            col.push(document.createElement("button"));
-            col[10].type="button";
-            col[10].className = "btn btn-danger";
-            col[10].innerHTML="Delete";
-            col[10].setAttribute("onclick","del("+data[item].ID+")");
-            for(var i=0;i<11;i++) row.appendChild(col[i]);
-            document.getElementById("list").appendChild(row);
-        }    
-    }
-
-};
-xhttp.open("GET","/view",true);
-xhttp.send();
-
-function edit(item){
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST","/edit",true);
-    xhttp.setRequestHeader("Content-type","application/json");
-    var temp = {
-        ID:item
-    };
-    var send_data = JSON.stringify(temp);
-    xhttp.send(send_data);
-    window.location.href = "/editdata"
-}
-
-function del(item){
-    console.log(item);
-    //alert("GOd is going to delete");
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState==4&&this.status==200){
-            //do nothing
-        }
-    }
-    xhttp.open("POST","/delete",true);
-    xhttp.setRequestHeader("Content-type","application/json");
-    var temp = {
-        ID:item
-    };
-    var send_data = JSON.stringify(temp);
-    //console.log(temp);
-    xhttp.send(send_data);
-    //document.getElementById("delete").innerHTML = "God is going to delete data"+item;
-    window.location.href = "/admin";
-    alert("Data Deleted");
-    
-}
-
-function LogOut(){
-    window.location.href = "/";
-}
-
-function add(){
-    document.getElementById("add").innerHTML = "God is going to add data";
-    window.location.href = "/signup";
-}
-
-function search(){
-    //document.getElementById("add").innerHTML = "God is search to add data";
-    var xhttp=new XMLHttpRequest();
-    xhttp.open("post","/search",true);
-    xhttp.setRequestHeader("Content-type","application/json");
-    var search ={
-        First_Name:document.getElementById("search_field").value
-    };
-    var send_data = JSON.stringify(search);
-    xhttp.send(send_data);
-    console.log("Done search");
-
-    xhttp.onreadystatechange = function(){
-        if(this.readyState==4&&this.status==200){
-            console.log("Hello");
-            var data = JSON.parse(this.responseText);
-            for(var item=0;item<data.length;item++){
-                console.log(data[item].ID);
-                var row=document.createElement("tr");
-                row.setAttribute("id","row");
-                var col=new Array();
-                for(var i=0;i<9;i++) col.push(document.createElement("td"));
-                col[0].innerHTML = data[item].ID;
-                col[1].innerHTML = data[item].First_Name;
-                col[2].innerHTML = data[item].Last_Name;
-                col[3].innerHTML = data[item].Email;
-                col[4].innerHTML = data[item].Tel;
-                col[5].innerHTML = data[item].Address;
-                col[6].innerHTML = data[item].Birthday;
-                col[7].innerHTML = data[item].Membership;
-                col[8].innerHTML = data[item].Number_of_Vehicle;
-                col.push(document.createElement("button"));
-                col[9].type = "button";
-                col[9].innerHTML = "edit";
-                col[9].setAttribute("onclick","edit("+data[item].ID+")");
-                col.push(document.createElement("button"));
-                col[10].type="button";
-                col[10].innerHTML="Delete";
-                col[10].setAttribute("onclick","del("+data[item].ID+")");
-                for(var i=0;i<11;i++) row.appendChild(col[i]);
-                document.getElementById("list").appendChild(row);
-            }
-        }
-    }
-}
-
-/*document.write('<table style="width:100%">');
-        document.write("<tr>");
-            document.write("<th>"+ID+"</th>");
-            document.write("<th>"+First_Name+"</th>");
-            document.write("<th>"+Last_Name+"</th>");
-            document.write("<th>"+Email+"</th>");
-            document.write("<th>"+Tel+"</th>");
-            document.write("<th>"+Address+"</th>");
-            document.write("<th>"+Birthday+"</th>");
-            document.write("<th>"+Membership+"</th>");
-            document.write("<th>"+Number_of_Vehicle+"</th>");
-        document.write("</tr>");
-        for (var item=0; item < data.length; item++) {
-            document.write("<tr>");
-            document.write("<th>"+data[item].ID+"</th>");
-            document.write("</tr>");
-        }
-        document.write("</table>"); */
