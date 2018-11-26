@@ -89,6 +89,10 @@ function LogOut(){
     window.location.href = "/";
 }
 
+function gotoreserve(){
+    window.location.href = "/admin_reserve";
+}
+
 function add(){
     document.getElementById("add").innerHTML = "God is going to add data";
     window.location.href = "/signup";

@@ -38,6 +38,17 @@ app.get("/view",function(req,res){
     })
 })
 
+app.get("/view_reserve",function(req,res){
+    console.log("Admin views member lists");
+    var q = 'select R.Reservation_ID,R.Service_type,R.Branch_ID,R.Time,R.License_plate,C.First_Name from reservation R,vehicle V,customer C where R.License_plate=V.License_plate and V.Customer_ID=C.ID;';
+    connection.query(q,function(err,result,field){
+        if(err) throw err;
+        res.setHeader("Content-type","application/json");
+        console.log(JSON.stringify(result));
+        res.send(JSON.stringify(result));
+    })
+})
+
 app.post("/editdata",function(req,res){
     var inp=req.body;
     console.log(inp);
@@ -99,6 +110,7 @@ app.post("/delete",function(req,res){
     connection.query(q);
     console.log("Delete Data from query");
 })
+
 app.get("/",function(req,res){
     console.log("Going to Log in page");
     res.sendFile(path.join(__dirname+"/HTML/login.html"));
@@ -123,6 +135,11 @@ app.get("/signup",function(req,res){
 app.get("/editdata",function(req,res){
     console.log("Going to edit page");
     res.sendFile(path.join(__dirname+"/HTML/editdata.html"));
+})
+
+app.get("/admin_reserve",function(req,res){
+    console.log("Going to reservation page");
+    res.sendFile(path.join(__dirname+"/HTML/admin_reserve.html"));
 })
 
 
