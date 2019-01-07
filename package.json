@@ -10,8 +10,17 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Chalermwat",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chalermwat/DatabaseProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chalermwat/DatabaseProject/issues"
+  },
+  "homepage": "https://github.com/Chalermwat/DatabaseProject#readme"
 }

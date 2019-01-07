@@ -67,7 +67,7 @@ function edit(item){
 function del(item){
     console.log(item);
     //alert("GOd is going to delete");
-    /*var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if(this.readyState==4&&this.status==200){
             //do nothing
@@ -81,7 +81,7 @@ function del(item){
     var send_data = JSON.stringify(temp);
     xhttp.send(send_data);
     window.location.href = "/admin";
-    alert("Data Deleted");*/
+    alert("Data Deleted");
     
 }
 
